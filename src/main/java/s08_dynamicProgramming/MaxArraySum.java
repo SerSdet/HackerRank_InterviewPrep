@@ -11,7 +11,8 @@ public class MaxArraySum {
      * @param arr sample array
      * @return maximum possible sum of non-adjacent elements in array 'arr'
      *
-     * First, array checked that it had at least two element, if not return that only element or zero.
+     * First, array checked that it had at least two element, if not return that only element (if it is bigger than zero)
+     *          or zero.
      *
      * Then, create an array with same size with a sample array, this array will store the maximum sum of adjacent
      * elements after same index element taken into consideration.
@@ -30,13 +31,14 @@ public class MaxArraySum {
      */
 
     static int maxSubsetSum(int[] arr) {
+        if (arr.length == 0) return 0;
         if (arr.length == 1) return Math.max(arr[0], 0);
         int[] res = new int[arr.length];
-        res[0] = arr[0];
+        res[0] = Math.max(0,arr[0]);
         res[1] = Math.max(res[0], arr[1]);
 
         for (int i = 2; i < arr.length; i++) {
-            res[i] = Math.max((res[i - 2] + arr[i]), Math.max(arr[i], (Math.max(res[i - 1], res[i - 2]))));
+            res[i] = Math.max((res[i - 2] + arr[i]), res[i - 1]);
         }
         return Math.max(res[res.length - 1], 0);
 
