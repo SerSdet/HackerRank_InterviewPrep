@@ -18,13 +18,12 @@ public class MaxArraySum {
      * elements after same index element taken into consideration.
      *
      * After that, assign first and second elements of the result array.
-     *             - First element will be the first element of the array.
+     *             - First element will be the first element of the array or 0 if it is smaller than 0.
      *             - Second one must be bigger one of second element of array or first element of result
      *
      * After that start a loop from the third element of the array,
-     *       - Each element of result array can be calculated as that index of 'arr' and two before result element,
-     *         But since some elements of 'arr' can be negative, this number must be compared with index of 'arr'
-     *         and bigger one of previous result element and element before that element.
+     *       - Each element of result array can be calculated as that index of 'arr' and one before result element,
+     *         But since some elements of 'arr' can be negative, previous result element.
      *
      * When the loop finished, last result array element checked whether it is negative, if so return 0 otherwise that
      * element will be returned as result.
